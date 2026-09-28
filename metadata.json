@@ -1,0 +1,9 @@
+{
+  "name": "AgriAI - AI Agriculture Problem Solver",
+  "description": "AI-powered crop disease detection, pest analysis, soil nutrient guidance, and multilingual agricultural problem solver for farmers.",
+  "request_frame": "CUSTOM",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

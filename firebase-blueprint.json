@@ -1,0 +1,117 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "Farmer user account profile and preferences",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique user ID matching Firebase Auth UID"
+        },
+        "name": {
+          "type": "string",
+          "description": "Full name of the farmer",
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "format": "email",
+          "description": "User email address"
+        },
+        "first_name": {
+          "type": "string",
+          "description": "First name",
+          "maxLength": 50
+        },
+        "last_name": {
+          "type": "string",
+          "description": "Last name",
+          "maxLength": 50
+        },
+        "surname": {
+          "type": "string",
+          "description": "Father or family name",
+          "maxLength": 50
+        },
+        "mobile_number": {
+          "type": "string",
+          "description": "Farmer contact mobile number",
+          "maxLength": 20
+        },
+        "photo_url": {
+          "type": "string",
+          "description": "Avatar photo URL"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Account registration timestamp"
+        }
+      },
+      "required": ["id", "name", "email", "created_at"]
+    },
+    "Analysis": {
+      "title": "Analysis",
+      "description": "AI crop health diagnosis and guidance record",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique analysis record identifier"
+        },
+        "user_id": {
+          "type": "string",
+          "description": "Owner user ID"
+        },
+        "crop": {
+          "type": "string",
+          "description": "Crop name",
+          "maxLength": 100
+        },
+        "location": {
+          "type": "string",
+          "description": "Field location",
+          "maxLength": 150
+        },
+        "stage": {
+          "type": "string",
+          "description": "Crop growth stage",
+          "maxLength": 50
+        },
+        "category": {
+          "type": "string",
+          "description": "Problem category (Disease, Pest, Soil, Irrigation, etc.)",
+          "maxLength": 50
+        },
+        "description": {
+          "type": "string",
+          "description": "Detailed description of crop symptoms",
+          "maxLength": 2000
+        },
+        "image_name": {
+          "type": "string",
+          "description": "Uploaded crop image filename if provided"
+        },
+        "analysis": {
+          "type": "object",
+          "description": "Structured AI analysis result payload"
+        },
+        "created_at": {
+          "type": "string",
+          "description": "Analysis creation timestamp"
+        }
+      },
+      "required": ["id", "user_id", "description", "created_at"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Individual farmer profile document"
+    },
+    "/users/{userId}/analyses/{analysisId}": {
+      "schema": "Analysis",
+      "description": "Crop diagnoses and recommendations belonging to the farmer"
+    }
+  }
+}
